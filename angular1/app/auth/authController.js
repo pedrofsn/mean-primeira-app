@@ -30,4 +30,6 @@ function AuthController($scope, $http, $location, auth, msgs) {
             $location.path('/login')
         })
     }
+
+    auth.validateToken()
 }
