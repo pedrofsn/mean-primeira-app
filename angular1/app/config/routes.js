@@ -4,7 +4,7 @@ angular.module('primeiraApp').config([
   function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('dashboard', {
       url: "/dashboard",
-      templateUrl: "dashboard/dashboard.html"
+      templateUrl: "auth/form.html"
     }).state('billingCycle', {
       url: "/billingCycles?page",
       templateUrl: "billingCycle/tabs.html"
