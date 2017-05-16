@@ -23,31 +23,38 @@ function AuthFactory($http, msgs, consts) {
             .then(resp => {
                 localStorage.setItem(userKey, JSON.stringify(resp.data))
                 $http.defaults.headers.common.Authorization = resp.data.token
-                if(callback) callback()
+                if(callback) callback(resp.data)
             }).catch(function(resp) {
                 msgs.addError(resp.data.errors)
             })
     } 
 
-    function logout() {
+    function logout(callback) {
         localStorage.removeItem(userKey)
         $http.defaults.headers.common.Authorization = ''
+        if(callback) callback()
     }
 
     function validateToken(callback) {
-        $http.post(`${consts.oapiUrl}/validateToken`)
-            .then(resp => {
-                if(!resp.token) {
-                    logout()
-                } else {
-                    const currentUser = JSON.parse(localStorage.getItem(userKey))
-                    $http.defaults.headers.common.Authorization = currentUser.token
-                    if(callback) callback()
-                }
-            }).catch(function(resp) {
-                msgs.addError(resp.data.errors)
-            })
+        const token = getUser() ? getUser().token : null
+        if(token) {
+            $http.post(`${consts.oapiUrl}/validateToken`, { token })
+                .then(resp => {
+                    if(!resp.token) {
+                        logout()
+                    } else {
+                        $http.defaults.headers.common.Authorization = getUser().token
+                        if(callback) callback()
+                    }
+                }).catch(function(resp) {
+                    msgs.addError(resp.data.errors)
+                })
+        }
     }
 
-    return { signup, login, logout, validateToken }
+    function getUser() {
+        return JSON.parse(localStorage.getItem(userKey))
+    }
+
+    return { signup, login, logout, validateToken, getUser }
 }

@@ -4,11 +4,39 @@ angular.module('primeiraApp').config([
   function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('dashboard', {
       url: "/dashboard",
-      templateUrl: "auth/form.html"
+      templateUrl: "dashboard/dashboard.html"
     }).state('billingCycle', {
       url: "/billingCycles?page",
       templateUrl: "billingCycle/tabs.html"
+    }).state('login', {
+      url: "/login",
+      templateUrl: "auth/form.html"
     })
 
     $urlRouterProvider.otherwise('/dashboard')
 }])
+.run([
+	'$rootScope',
+	'$http',
+	'$location',
+	'auth',
+	function($rootScope, $http, $location, auth) {
+		$rootScope.hasUser = !!auth.getUser()
+		
+		const currentUser = auth.getUser()
+		if(currentUser) {
+			$http.defaults.headers.common.Authorization = currentUser.token
+		}
+
+		$rootScope.$on('$locationChangeStart', function (event, next, current) {
+			// var publicPages = ['/login'];
+			// var restrictedPage = publicPages.indexOf($location.path()) === -1
+			// if (restrictedPage && !$localStorage.currentUser) {
+			$rootScope.hasUser = !!auth.getUser()
+			if(!auth.getUser()) {
+				$location.path('/login')
+			}
+			// }
+		})
+	}	
+])

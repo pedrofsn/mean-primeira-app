@@ -9,11 +9,14 @@
   <link rel="stylesheet" href="/assets/css/app.min.css">
 </head>
 <body class="skin-blue fixed sidebar-mini">
-  <div class="wrapper">
+  <div class="wrapper" ng-show="hasUser">
     <header class="main-header" ng-include="'/template/header/header.html'"></header>
     <aside class="main-sidebar" ng-include="'/template/menu/menu.html'"></aside>
     <div class="content-wrapper" ui-view></div>
     <footer class="main-footer" ng-include="'/template/footer/footer.html'"></footer>
+  </div>
+  <div ng-show="!hasUser">
+    <div ui-view></div>
   </div>
 
   <script src="/assets/js/deps.min.js"></script>

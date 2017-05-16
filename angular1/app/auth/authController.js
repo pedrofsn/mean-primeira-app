@@ -15,13 +15,19 @@ function AuthController($scope, $http, $location, auth, msgs) {
 
     vm.login = () => {
         auth.login(vm.user, () => {
-            console.log('Sucesso!')
+            $location.path('/')
         })
     }
 
     vm.signup = () => {
         auth.signup(vm.user, () => {
-            console.log('Sucesso!')
+            $location.path('/')
+        })
+    }
+
+    vm.logout = () => {
+        auth.logout(() => {
+            $location.path('/login')
         })
     }
 }
