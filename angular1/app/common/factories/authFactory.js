@@ -40,7 +40,7 @@ function AuthFactory($http, msgs, consts) {
         if(token) {
             $http.post(`${consts.oapiUrl}/validateToken`, { token })
                 .then(resp => {
-                    if(!resp.token) {
+                    if(!resp.data.valid) {
                         logout()
                     } else {
                         $http.defaults.headers.common.Authorization = getUser().token
