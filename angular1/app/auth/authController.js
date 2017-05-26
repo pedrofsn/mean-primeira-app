@@ -31,9 +31,5 @@ function AuthController($scope, $http, $location, auth, msgs) {
         })
     }
 
-    vm.getUser = () => {
-        return auth.getUser()
-    }
-
     auth.validateToken()
 }

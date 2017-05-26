@@ -21,16 +21,14 @@ angular.module('primeiraApp').config([
 	'$location',
 	'auth',
 	function($rootScope, $http, $location, auth) {
-		$rootScope.validUser = !!auth.getUser()
-		
-		const currentUser = auth.getUser()
-		if(currentUser) {
-			$http.defaults.headers.common.Authorization = currentUser.token
+		$rootScope.user = auth.getUser()
+		if($rootScope.user) {
+			$http.defaults.headers.common.Authorization = $rootScope.user.token
 		}
 
 		$rootScope.$on('$locationChangeStart', function (event, next, current) {
-			$rootScope.validUser = !!auth.getUser()
-			if(!auth.getUser()) {
+			$rootScope.user = auth.getUser()
+			if(!$rootScope.user) {
 				$location.path('/login')
 			} else if($location.path() === '/login') {
 				$location.path('/')

@@ -9,16 +9,12 @@
   <link rel="stylesheet" href="/assets/css/app.min.css">
 </head>
 <body class="skin-blue fixed sidebar-mini">
-  <div class="wrapper" ng-if="validUser">
-    <header class="main-header" ng-include="'/template/header/header.html'"></header>
-    <aside class="main-sidebar" ng-include="'/template/menu/menu.html'"></aside>
-    <div class="content-wrapper" ui-view></div>
-    <footer class="main-footer" ng-include="'/template/footer/footer.html'"></footer>
+  <div class="wrapper">
+    <header class="main-header" ng-include="'/template/header/header.html'" ng-if="user"></header>
+    <aside class="main-sidebar" ng-include="'/template/menu/menu.html'" ng-if="user"></aside>
+    <div ng-class="{'content-wrapper': user}" ui-view></div>
+    <footer class="main-footer" ng-include="'/template/footer/footer.html'" ng-if="user"></footer>
   </div>
-  <div class="wrapper" ng-if="!validUser">
-    <div ui-view></div>
-  </div>
-
   <script src="/assets/js/deps.min.js"></script>
   <script src="/assets/js/app.min.js"></script>
 </body>
