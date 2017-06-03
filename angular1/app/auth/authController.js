@@ -12,24 +12,17 @@ function AuthController($scope, $http, $location, auth, msgs) {
     vm.loginMode = true
 
     vm.changeMode = () => vm.loginMode = !vm.loginMode
+    vm.getUser = () => auth.getUser()
 
     vm.login = () => {
-        auth.login(vm.user, () => {
-            $location.path('/')
-        })
+        auth.login(vm.user, err => err ? msgs.addError(err) : $location.path('/'))
     }
 
     vm.signup = () => {
-        auth.signup(vm.user, () => {
-            $location.path('/')
-        })
+        auth.signup(vm.user, err => err ? msgs.addError(err) : $location.path('/'))
     }
 
     vm.logout = () => {
-        auth.logout(() => {
-            $location.path('/login')
-        })
+        auth.logout(() => $location.path('/login'))
     }
-
-    auth.validateToken()
 }

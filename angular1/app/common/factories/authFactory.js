@@ -1,14 +1,13 @@
 angular.module('primeiraApp').factory('auth', [
     '$http',
-    'msgs',
+    '$rootScope',
     'consts',
     AuthFactory
 ])
 
+function AuthFactory($http, $rootScope, consts) {
 
-function AuthFactory($http, msgs, consts) {
-
-    const userKey = '_primeira_app_user'
+    let user = null
 
     function signup(user, callback) {
         submit('signup', user, callback)
@@ -21,39 +20,44 @@ function AuthFactory($http, msgs, consts) {
     function submit(url, user, callback) {
         $http.post(`${consts.oapiUrl}/${url}`, user)
             .then(resp => {
-                localStorage.setItem(userKey, JSON.stringify(resp.data))
+                localStorage.setItem(consts.userKey, JSON.stringify(resp.data))
                 $http.defaults.headers.common.Authorization = resp.data.token
-                if(callback) callback(resp.data)
-            }).catch(function(resp) {
-                msgs.addError(resp.data.errors)
+                if (callback) callback(null, resp.data)
+            }).catch(function (resp) {
+                if (callback) callback(resp.data.errors, resp.data)
             })
-    } 
-
-    function logout(callback) {
-        localStorage.removeItem(userKey)
-        $http.defaults.headers.common.Authorization = ''
-        if(callback) callback()
     }
 
-    function validateToken(callback) {
-        const token = getUser() ? getUser().token : null
-        if(token) {
+    function logout(callback) {
+        user = null
+        localStorage.removeItem(consts.userKey)
+        $http.defaults.headers.common.Authorization = ''
+        if (callback) callback(null)
+    }
+
+    function validateToken(token, callback) {
+        if (token) {
             $http.post(`${consts.oapiUrl}/validateToken`, { token })
                 .then(resp => {
-                    if(!resp.data.valid) {
+                    if (!resp.data.valid) {
                         logout()
                     } else {
                         $http.defaults.headers.common.Authorization = getUser().token
-                        if(callback) callback()
                     }
-                }).catch(function(resp) {
-                    msgs.addError(resp.data.errors)
+                    if (callback) callback(null, resp.data.valid)
+                }).catch(function (resp) {
+                    if (callback) callback(resp.data.errors)
                 })
+        } else {
+            if (callback) callback('Token inválido.')
         }
     }
 
     function getUser() {
-        return JSON.parse(localStorage.getItem(userKey))
+        if(!user) {
+            user = JSON.parse(localStorage.getItem(consts.userKey))
+        }
+        return user
     }
 
     return { signup, login, logout, validateToken, getUser }
