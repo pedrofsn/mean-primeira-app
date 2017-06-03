@@ -28,18 +28,19 @@ angular.module('primeiraApp').config([
 
 			function validateUser() {
 				const user = auth.getUser()
-				const isLoginPage = $window.location.href.endsWith('login.html')
+				const authPage = '/auth.html'
+				const isAuthPage = $window.location.href.endsWith(authPage)
 				
-				if (!user && !isLoginPage) {
-					$window.location.href = '/login.html'
+				if (!user && !isAuthPage) {
+					$window.location.href = authPage
 				} else if (user && !user.isValid) {
 					auth.validateToken(user.token, (err, valid) => {
 						if (!valid) {
-							$window.location.href = '/login.html'
+							$window.location.href = authPage
 						} else {
 							user.isValid = true
 							$http.defaults.headers.common.Authorization = user.token
-							isLoginPage ? $window.location.href = '/' : $location.path('/dashboard')
+							isAuthPage ? $window.location.href = '/' : $location.path('/dashboard')
 						}
 					})
 				}

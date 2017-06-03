@@ -1,13 +1,11 @@
 angular.module('primeiraApp').controller('AuthCtrl', [
-  '$scope',
-  '$http',
   '$location',
   'auth',
   'msgs',
   AuthController
 ])
 
-function AuthController($scope, $http, $location, auth, msgs) {
+function AuthController($location, auth, msgs) {
     const vm = this
     vm.loginMode = true
 
