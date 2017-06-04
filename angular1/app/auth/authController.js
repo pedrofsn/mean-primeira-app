@@ -21,6 +21,6 @@ function AuthController($location, auth, msgs) {
     }
 
     vm.logout = () => {
-        auth.logout(() => $location.path('/login'))
+        auth.logout(() => $location.path('/'))
     }
 }
