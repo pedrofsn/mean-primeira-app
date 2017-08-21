@@ -48,7 +48,6 @@
             if (token) {
                 $http.post(`${consts.oapiUrl}/validateToken`, { token })
                     .then(resp => {
-                        console.log(resp.data.valid)
                         if (!resp.data.valid) {
                             logout()
                         } else {
