@@ -13,6 +13,7 @@
         function getUser() {
             if (!user) {
                 user = JSON.parse(localStorage.getItem(consts.userKey))
+                $http.defaults.headers.common.Authorization = user ? user.token : null
             }
             return user
         }
@@ -47,6 +48,7 @@
             if (token) {
                 $http.post(`${consts.oapiUrl}/validateToken`, { token })
                     .then(resp => {
+                        console.log(resp.data.valid)
                         if (!resp.data.valid) {
                             logout()
                         } else {
