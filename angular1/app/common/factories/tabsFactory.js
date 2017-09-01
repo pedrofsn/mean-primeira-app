@@ -10,7 +10,15 @@ angular.module('primeiraApp').factory('tabs', [ function() {
       owner.tabCreate = tabCreate
       owner.tabUpdate = tabUpdate
       owner.tabDelete = tabDelete
+      
+      if(tabList) selectTab(owner, 'tabList')
+      if(tabUpdate) selectTab(owner, 'tabUpdate')
+      if(tabDelete) selectTab(owner, 'tabDelete')
    }
 
-   return { show }
+   function selectTab(owner, tabName) {
+      owner.selectedTab = tabName 
+   }
+
+   return { show, selectTab }
 }])

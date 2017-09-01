@@ -104,8 +104,13 @@ function BillingCycleController($scope, $http, $location, msgs, tabs, consts) {
 
   $scope.cancel = function() {
     tabs.show($scope, {tabList: true, tabCreate: true})
+    tabs.selectTab($scope, 'tabList')
     $scope.billingCycle = {}
     initCreditsAndDebts()
+  }
+
+  $scope.selectTab = function(selectedTab) {
+    tabs.selectTab($scope, selectedTab)
   }
 
   $scope.calculateValues = function() {
