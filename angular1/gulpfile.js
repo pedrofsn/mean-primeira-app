@@ -1,21 +1,15 @@
 const gulp = require('gulp')
-const fs = require('fs-extra')
 const util = require('gulp-util')
+const sequence = require('run-sequence')
 
-gulp.task('default', function() {
-    fs.walk('gulpTasks').on('data', function (file) {
-      if((/\.(js)$/i).test(file.path)) {
-        require(file.path)
-      }
-    }).on('end', function () {
-      gulp.start('build')
-    })
-})
+require('./gulpTasks/app')
+require('./gulpTasks/deps')
+require('./gulpTasks/server')
 
-gulp.task('build', function() {
+gulp.task('default', () => {
   if(util.env.production) {
-    gulp.start('deps', 'app')
+    sequence('deps', 'app')
   } else {
-    gulp.start('deps', 'app', 'server')
+    sequence('deps', 'app', 'server')
   }
 })
