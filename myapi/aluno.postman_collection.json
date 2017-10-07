@@ -1,0 +1,192 @@
+{
+	"id": "5562b8d9-ca26-b83f-d631-ee77d9f05b93",
+	"name": "aluno",
+	"description": "",
+	"order": [
+		"a150e1e3-6c2b-2add-c434-cf9e7abf52c7",
+		"fae94f5d-742a-af9d-f7ea-803ea46236e4",
+		"6a2200f1-0ae3-8907-c24a-f66062138866",
+		"24757038-8d35-05ff-9fba-e7bbf5f4d14f",
+		"d60d4646-120c-f5b4-cc79-af760e971b3e"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1507367989054,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "24757038-8d35-05ff-9fba-e7bbf5f4d14f",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:4004/api/alunos/:id",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {
+				"id": "59d8e1c01567ce388c335333"
+			},
+			"pathVariableData": [
+				{
+					"key": "id",
+					"value": "59d8e1c01567ce388c335333"
+				}
+			],
+			"method": "PUT",
+			"data": [
+				{
+					"key": "matricula",
+					"value": "20172654321",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "nome",
+					"value": "José Maria",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1507386680076,
+			"name": "atualiza um",
+			"description": "",
+			"collectionId": "5562b8d9-ca26-b83f-d631-ee77d9f05b93",
+			"responses": []
+		},
+		{
+			"id": "6a2200f1-0ae3-8907-c24a-f66062138866",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:4004/api/alunos/:id",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {
+				"id": "59d8e1c01567ce388c335333"
+			},
+			"pathVariableData": [
+				{
+					"key": "id",
+					"value": "59d8e1c01567ce388c335333"
+				}
+			],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1507386677819,
+			"name": "obtém um",
+			"description": "",
+			"collectionId": "5562b8d9-ca26-b83f-d631-ee77d9f05b93",
+			"responses": []
+		},
+		{
+			"id": "a150e1e3-6c2b-2add-c434-cf9e7abf52c7",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:4004/api/alunos",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "matricula",
+					"value": "20172123456",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "nome",
+					"value": "Walison Moreira",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1507386675598,
+			"name": "novo",
+			"description": "",
+			"collectionId": "5562b8d9-ca26-b83f-d631-ee77d9f05b93",
+			"responses": []
+		},
+		{
+			"id": "d60d4646-120c-f5b4-cc79-af760e971b3e",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:4004/api/alunos/:id",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {
+				"id": "59d8e1c01567ce388c335333"
+			},
+			"pathVariableData": [
+				{
+					"key": "id",
+					"value": "59d8e1c01567ce388c335333"
+				}
+			],
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1507386683241,
+			"name": "apaga um",
+			"description": "",
+			"collectionId": "5562b8d9-ca26-b83f-d631-ee77d9f05b93",
+			"responses": []
+		},
+		{
+			"id": "fae94f5d-742a-af9d-f7ea-803ea46236e4",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:4004/api/alunos",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1507386673236,
+			"name": "obtém todos",
+			"description": "",
+			"collectionId": "5562b8d9-ca26-b83f-d631-ee77d9f05b93",
+			"responses": []
+		}
+	]
+}
