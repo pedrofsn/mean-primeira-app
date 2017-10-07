@@ -1,38 +1,37 @@
-# Mongo, Express, Angular e Node - Primeira Aplicação do ZERO!
+# Mongo
 
-## Sobre o Curso
-O curso relacionado ao material disponibilizado neste repositório está disponibilizado no portal [Cod3r](http://www.cod3r.co/portal/courses) e na [Udemy](https://www.udemy.com/mean-primeira-aplicacao-do-zero).
+## Iniciando o Mongo
 
-## Aulas Grátis
-**Quer conhecer mais sobre o curso?** Acesse algumas aulas grátis que foram disponibilizadas no nosso [Canal do Youtube](https://youtube.com/aulasdeprogramacao).
+`mongod`
 
-- [Playlist do Curso](https://www.youtube.com/watch?v=5sMBYBRwJ5Q&list=PLDm7BSK-M5YleJFYqnxvs7DZruSPmCgya)
+# Back end
 
-## Configuração
+Execute os comandos na pasta `backend`.
 
-Passo à passo da configuração necessária para deixar o ambiente e o projeto prontos para o desenvolvimento da aplicação.
+## Instalando dependências
 
-- Clonar o repositório
-```sh
-$ git clone https://github.com/CursosCod3r/mean-primeira-app.git
-```
+`npm install`
 
-- Mudar para uma tag específica
-```sh
-$ git reset --hard <tag_name>
-```
+## Atualizando dependências
 
-- Voltar para a versão mais atual do master
-```sh
-$ git pull
-```
+`npm update` 
 
-## Tags
-Foram aplicadas seis tags no master:
+## Executando em modo *dev*
 
-1. **exercicios_mongo** - tag com todos os exercícios do mongo concluídos
-2. **exercicios_node** - tag com todos os exercícios do node concluídos
-3. **exercicios_express** - tag com todos os exercícios do express concluídos
-4. **exercicios_angular** - tag com todos os exercícios do angular concluídos
-5. **backend** - tag com o backend concluído
-6. **frontend** - tag com o frontend concluído
+`npm run dev`
+
+## Executando um serviço
+
+Abra o endereço `http://localhost:3003/api/billingSummary`, por exemplo, num navegador.
+
+# Front End
+
+Execute os comandos na pasta `angular1`.
+
+## Instalando dependências
+
+`npm install`
+
+## Abrindo a aplicação web
+
+Abra o endereço `http://localhost:4000` no navegador.
