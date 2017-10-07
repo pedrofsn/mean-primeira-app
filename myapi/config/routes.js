@@ -9,5 +9,4 @@ module.exports = function(server) {
   // rotas da API
   const alunoService = require('../api/aluno/alunoService')
   alunoService.register(router, '/alunos')
-
 }
