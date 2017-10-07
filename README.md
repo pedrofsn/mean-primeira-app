@@ -71,7 +71,7 @@ Inclua os scripts `dev` e `production` da seguinte forma.
 ...
 "scripts": {
   "dev": "nodemon",
-  "production": "pm2 start loader.js --name backend"
+  "production": "pm2 start index.js --name myapi
 },
 ...
 ```
